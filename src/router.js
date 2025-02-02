@@ -1,4 +1,4 @@
-import Auth from "./pages/Auth"
+import Auth from "./pages/Auth/Auth"
 import Todo from "./pages/Todo"
 import BoardPage from "./pages/BoardPage"
 
