@@ -4,7 +4,14 @@ import BoardPage from "./pages/BoardPage"
 
 import {LOGIN_ROUTE, REGISTER_ROUTE, BOARD_ROUTE} from "./utils/consts"
 
-export const TodoRoutes = [
+export const authRoutes = [
+    {
+        path: BOARD_ROUTE + '/:id',
+        Component: BoardPage
+    }
+]
+
+export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         Component: Auth
@@ -12,10 +19,6 @@ export const TodoRoutes = [
     {
         path: REGISTER_ROUTE,
         Component: Auth
-    },
-    {
-        path: BOARD_ROUTE + '/:id',
-        Component: BoardPage
     },
     {
         path: '/',
