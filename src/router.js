@@ -1,5 +1,5 @@
 import Auth from "./pages/Auth/Auth"
-import Todo from "./pages/Todo"
+import Todo from "./pages/Todo/Todo"
 import BoardPage from "./pages/BoardPage"
 
 import {LOGIN_ROUTE, REGISTER_ROUTE, BOARD_ROUTE} from "./utils/consts"

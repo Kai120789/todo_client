@@ -2,6 +2,9 @@ import { makeAutoObservable } from "mobx";
 import AuthService from "../api/userAPI";
 import axios from "axios";
 import { $authHost } from "../api";
+import { useContext } from "react";
+import { Context } from "..";
+import {jwtDecode} from "jwt-decode"
 
 export default class UserStore {
     isAuth = !!localStorage.getItem("token");
@@ -40,7 +43,7 @@ export default class UserStore {
             console.log(response)
             localStorage.setItem('token', response.data.accessToken);
             this.setIsAuth(true);
-            this.setUser(response.data.user);
+            this.setUser(jwtDecode(response.data.accessToken));
             
         } catch (e) {
             console.log(1)
@@ -54,7 +57,7 @@ export default class UserStore {
             console.log(response)
             localStorage.setItem('token', response.data.accessToken);
             this.setIsAuth(true);
-            this.setUser(response.data.user);
+            this.setUser(jwtDecode(response.data.accessToken));
         } catch (e) {
             console.log(e.response?.data?.message);
         }
@@ -78,7 +81,6 @@ export default class UserStore {
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setIsAuth(true);
-            this.setUser(response.data.user);
         } catch (e) {
             console.log(e.response?.data?.message);
         } finally {

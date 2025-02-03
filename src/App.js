@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {BrowserRouter} from "react-router-dom"
+import {BrowserRouter, useNavigate} from "react-router-dom"
 import AppRouter from "./components/AppRouter"
 import { observer } from 'mobx-react-lite';
 import { Context } from '.';
+import {jwtDecode} from "jwt-decode"
+
 
 function App() {
   const {user} = useContext(Context)
@@ -10,12 +12,19 @@ function App() {
 
   const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        user.checkAuth().then(data => {
-            user.setUser(true)
-            user.setIsAuth(true)
-        }).finally(() => setLoading(false))
-    }, [])
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      user.setUser(jwtDecode(token));
+      user.setIsAuth(true);
+    }
+
+    user.checkAuth()
+      .then(data => {
+          user.setIsAuth(true);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <BrowserRouter>

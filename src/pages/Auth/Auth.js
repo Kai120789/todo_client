@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React, { useContext, useState } from "react";
 import { Context } from "../..";
-import "./Auth.scss"
+import styles from "./Auth.module.scss"
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { REGISTER_ROUTE, LOGIN_ROUTE } from "../../utils/consts";
 
@@ -28,51 +28,55 @@ const Auth = () => {
     }
 
     return (
-        <div class="container">
-            <h1>Регистрация | TODO</h1>
-            <input
-                value={login}
-                type="text"
-                placeholder='Логин'
-                onChange={e => setLogin(e.target.value)}
-            />
-            <input
-                value={password}
-                type="password"
-                placeholder='Пароль'
-                onChange={e => setPassword(e.target.value)}
-            />
-            {isLogin ?
-                <div>
-                    Нет аккаунта? <NavLink to={REGISTER_ROUTE}>Зарегистрируйся</NavLink>
-                </div>
-                :
-                <div>
-                    Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войти</NavLink>
-                </div>
-            }
-            {isLogin ?
-                <div className="button-group">
-                    <button onClick={click}>
-                        Логин
-                    </button>
-                    <button className="inactive_button">
-                        Регистрация
-                    </button>
-                </div>
-                :
-                <div className="button-group">
-                    <button className="inactive_button">
-                        Логин
-                    </button>
-                    <button onClick={click}>
-                        Регистрация
-                    </button>
-                </div>
-            }
-            
-            
-        </div>
+       <section className={styles.wrapper}>
+            <div className={styles.container}>
+                <h1>Регистрация | TODO</h1>
+                <input
+                    className={styles.input_log_pas}
+                    value={login}
+                    type="text"
+                    placeholder='Логин'
+                    onChange={e => setLogin(e.target.value)}
+                />
+                <input
+                    className={styles.input_log_pas}
+                    value={password}
+                    type="password"
+                    placeholder='Пароль'
+                    onChange={e => setPassword(e.target.value)}
+                />
+                {isLogin ?
+                    <div className={styles.is_login}>
+                        Нет аккаунта? <NavLink to={REGISTER_ROUTE}>Зарегистрируйся</NavLink>
+                    </div>
+                    :
+                    <div className={styles.is_login}>
+                        Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войти</NavLink>
+                    </div>
+                }
+                {isLogin ?
+                    <div className={styles.button_group}>
+                        <button onClick={click} className={styles.button_reg}>
+                            Логин
+                        </button>
+                        <button className={styles.inactive_button}>
+                            Регистрация
+                        </button>
+                    </div>
+                    :
+                    <div className={styles.button_group}>
+                        <button className={styles.inactive_button}>
+                            Логин
+                        </button>
+                        <button onClick={click} className={styles.button_reg}>
+                            Регистрация
+                        </button>
+                    </div>
+                }
+                
+                
+            </div>
+       </section>
     );
 }
 
