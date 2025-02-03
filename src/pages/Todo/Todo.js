@@ -15,9 +15,12 @@ const Todo = () => {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
-        user.setUser(jwtDecode(token));
-        user.setIsAuth(true);
+            user.setUser(jwtDecode(token));
+            user.setIsAuth(true);
         }
+    })
+
+    useEffect(() => {
         Promise.all([
             getStatuses().then(data => task.setStatuses(data)),
             getAllBoards().then(data => task.setBoards(data)),
@@ -25,17 +28,14 @@ const Todo = () => {
                 task.setTasks(data);
                 localStorage.setItem("tasks", JSON.stringify(data));
             }),
-            getAllBoardsByUserId(user.user.id).then(data => 
-                task.setBoardsIds(data),
-                
-            ),
-            
+            getAllBoardsByUserId(user.user.id).then(data => {
+                task.setBoardsIds(data);
+                return Promise.all(data.map(board => getOneBoard(board.boardId)));
+            }).then(fetchedBoards => task.setUserBoards(fetchedBoards))
         ]).finally(() => setLoading(false));
-    }, []);
+    }, [user.user.id]);
 
     const userTasks = task.tasks.filter(t => t.userId === user.user.id);
-    const userBoards = task.boardsIds.map(boardId => getOneBoard(boardId.boardId))
-    task.setUserBoards(userBoards)
 
     console.log(task)
 
@@ -44,6 +44,11 @@ const Todo = () => {
             const newBoard = await createBoard(name)
             task.setBoards([...task.boards, newBoard]);
             const boardIds = await addUserToBoard(newBoard.id, user.user.id)
+
+            const updatedBoards = await getAllBoardsByUserId(user.user.id);
+            const fetchedBoards = await Promise.all(updatedBoards.map(board => getOneBoard(board.boardId)));
+            task.setUserBoards(fetchedBoards);
+
             setName("");
             setShowForm(false);
         } catch (e) {
@@ -65,10 +70,17 @@ const Todo = () => {
                     />
                     <button onClick={click}>Создать</button>
                     <button onClick={() => setShowForm(false)}>Отмена</button>
-                    {userBoards.map(board =>
-                        <div key={board.id}>{board.name}</div>
-                    )}
+                    
                 </div>
+            )}
+            {loading ? (
+                <p>Загрузка...</p>
+            ) : task.userBoards.length === 0 ? (
+                <p>У вас пока нет досок.</p>
+            ) : (
+                task.userBoards.map(board => (
+                    <div key={board.id}>{board.name}</div>
+                ))
             )}
         </div>
     )
