@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "..";
 
-const BoardPage = () => {
+const BoardPage = ({tasks}) => {
     const {user} = useContext(Context);
-
     return (
         <div>
-            BoardPage
+            boardpage
         </div>
     )
 }

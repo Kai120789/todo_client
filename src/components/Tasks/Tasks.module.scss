@@ -1,0 +1,44 @@
+.tasks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(237, 235, 235);
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.task_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 90%;
+}
+
+.task_title, .task_description {
+    margin: 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.task_title {
+    background-color: rgb(111, 136, 208);
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.task_description {
+    background-color: rgb(255, 255, 255);
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+}

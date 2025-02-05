@@ -37,7 +37,6 @@ export default class UserStore {
     }
 
     async registration(login, password) {
-        console.log(1)
         try {
             const response = await AuthService.registration(login, password);
             console.log(response)
@@ -46,7 +45,6 @@ export default class UserStore {
             this.setUser(jwtDecode(response.data.accessToken));
             
         } catch (e) {
-            console.log(1)
             console.log(e.response?.data?.message);
         }
     }
@@ -63,9 +61,9 @@ export default class UserStore {
         }
     }
 
-    async logout() {
+    async logout(login) {
         try {
-            const response = await AuthService.logout();
+            const response = await AuthService.logout(login);
             localStorage.removeItem('token');
             this.setIsAuth(false);
             this.setUser({});

@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+
+.boards {
+    width: 300px;
+    background-color: rgb(237, 235, 235);
+    padding: 10px;
+}
+
+.tasksContainer {
+    flex-direction: column;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+
+body {
+    background-color: rgb(187, 187, 187);
+    margin: 0;
+    padding: 0;
+}
+
+.input_todo{
+    margin-top: 5px;
+    width: 90%;
+    font-size: 16px; 
+    padding: 10px;
+    display: inline-block;
+    background: #f1f1f1;
+    &:focus {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+}
+
+.button_group {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: 97%;
+    margin-top: 15px;
+}
+
+.container_btn {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+}
+
+.button_todo {
+    margin: 0;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #322281;
+    cursor: pointer; 
+    width: 300px;
+    height: 40px;
+}
+
+.button_todo_mini {
+    margin: 0;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #322281;
+    cursor: pointer; 
+    width: 140px;
+    height: 40px;
+}
+
+.button_todo_del {
+    margin: 0;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #9d0c0c;
+    cursor: pointer; 
+    width: 300px;
+    height: 40px;
+}

@@ -1,0 +1,24 @@
+.board_form {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.board_form:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+.board_form.active {
+    background-color: rgb(111, 124, 207);
+}
+
+.board_text {
+    margin-left: 10px;
+}

@@ -18,10 +18,19 @@ const Auth = () => {
             let data
             if (isLogin) {
                 data = await user.login(login, password)
+                
             } else {
                 data = await user.registration(login, password)
             }
-            navigate('/')
+
+            if (localStorage.getItem("token")) {
+                navigate('/')
+            } else {
+                alert("uncorrect login or password")
+                setLogin('')
+                setPassword('')
+            }
+            
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -30,7 +39,7 @@ const Auth = () => {
     return (
        <section className={styles.wrapper}>
             <div className={styles.container}>
-                <h1>Регистрация | TODO</h1>
+                <h1 className={styles.main_text} onClick={() => navigate('/')}>Регистрация | TODO</h1>
                 <input
                     className={styles.input_log_pas}
                     value={login}

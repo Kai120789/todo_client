@@ -9,8 +9,8 @@ export default class AuthService {
         return $host.post('api/user/registration', {login, password})
     }
 
-    static async logout() {
-        return $authHost.post('api/user/logout')
+    static async logout(login) {
+        return $authHost.delete('api/user/logout', { data: { login } })
     }
 
 }
