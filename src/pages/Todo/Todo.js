@@ -54,8 +54,7 @@ const Todo = () => {
     
 
     const getUserTasks = async (boardId) => {
-        const userTasks = task.tasks.filter(t => t.userId === user.user.id);
-        const boardTasks = userTasks.filter(t => t.boardId === boardId)
+        const boardTasks = task.tasks.filter(t => t.boardId === boardId)
         setShowTasks(boardTasks)
         setActiveBoardId(boardId);
     }

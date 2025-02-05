@@ -39,7 +39,7 @@ const Auth = () => {
     return (
        <section className={styles.wrapper}>
             <div className={styles.container}>
-                <h1 className={styles.main_text} onClick={() => navigate('/')}>Регистрация | TODO</h1>
+                <h1 className={styles.main_text} onClick={() => navigate('/')}>TODO</h1>
                 <input
                     className={styles.input_log_pas}
                     value={login}
