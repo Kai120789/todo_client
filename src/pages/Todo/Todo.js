@@ -228,7 +228,8 @@ const Todo = () => {
                         }
                     </div>
 
-                    <Tasks tasks={showTasks} />
+                    <Tasks tasks={showTasks} statuses={task.statuses} />
+
                 </div>
 
             </section>

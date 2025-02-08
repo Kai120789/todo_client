@@ -18,10 +18,44 @@
     text-align: center;
 }
 
-.closeButton {
+.title {
+    background-color: rgb(143, 143, 247);
+    margin-top: -5px;
+    border-radius: 8px;
+}
+
+
+.updButton {
+    width: 205px;
+    margin-left: 5px;
     margin-top: 10px;
     padding: 8px 16px;
+    background: blue;
+    font-size: 14px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.delButton {
+    margin-top: 5px;
+    width: 100px;
+    margin-left: 5px;
+    padding: 8px 16px;
     background: red;
+    font-size: 14px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.doneButton {
+    margin-top: 5px;
+    width: 100px;
+    margin-left: 5px;
+    padding: 8px 16px;
+    background: green;
+    font-size: 14px;
     color: white;
     border: none;
     cursor: pointer;
