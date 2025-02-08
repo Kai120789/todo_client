@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from ".";
 import { jwtDecode } from "jwt-decode";
 import { LOGIN_ROUTE } from "./utils/consts";
+import { motion } from "framer-motion";
 
 const App = observer(() => {
   const { user } = useContext(Context);
@@ -48,14 +49,30 @@ const App = observer(() => {
           user.setIsAuth(false);
           setAuthError(true);
         } else {
-          console.error("authorizate error:", error);
+          console.error("authorization error:", error);
         }
       })
       .finally(() => setLoading(false));
   }, [user]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          fontSize: "24px",
+          fontWeight: "bold",
+        }}
+      >
+        Loading...
+      </motion.div>
+    );
   }
 
   return (

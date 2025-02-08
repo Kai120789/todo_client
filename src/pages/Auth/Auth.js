@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React, { useContext, useState } from "react";
 import { Context } from "../..";
-import styles from "./Auth.module.scss"
+import { motion } from "framer-motion";
+import styles from "./Auth.module.scss";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { REGISTER_ROUTE, LOGIN_ROUTE } from "../../utils/consts";
 
@@ -11,14 +12,14 @@ const Auth = () => {
     const [password, setPassword] = useState('')
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
-    const {user} = useContext(Context);
+    const { user } = useContext(Context);
 
     const click = async () => {
         try {
             let data
             if (isLogin) {
                 data = await user.login(login, password)
-                
+
             } else {
                 data = await user.registration(login, password)
             }
@@ -30,16 +31,24 @@ const Auth = () => {
                 setLogin('')
                 setPassword('')
             }
-            
+
         } catch (e) {
             alert(e.response.data.message)
         }
     }
 
     return (
-       <section className={styles.wrapper}>
+        <section className={styles.wrapper}>
             <div className={styles.container}>
-                <h1 className={styles.main_text} onClick={() => navigate('/')}>TODO</h1>
+                <motion.h1
+                    className={styles.main_text}
+                    onClick={() => navigate('/')}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    TODO
+                </motion.h1>
                 <input
                     className={styles.input_log_pas}
                     value={login}
@@ -82,10 +91,8 @@ const Auth = () => {
                         </button>
                     </div>
                 }
-                
-                
             </div>
-       </section>
+        </section>
     );
 }
 

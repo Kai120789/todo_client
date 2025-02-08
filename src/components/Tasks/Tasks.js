@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Tasks.module.scss";
 import Modal from "../Modal/Modal";
+import { motion } from "framer-motion";
 
 const Tasks = ({ tasksUpd, tasks, statuses }) => {
     const [selectedTask, setSelectedTask] = useState(null);
@@ -23,16 +24,19 @@ const Tasks = ({ tasksUpd, tasks, statuses }) => {
     return (
         <div className={styles.tasks}>
             {tasks.map(task => (
-                <div 
-                    className={styles.task_card} 
-                    key={task.id} 
+                <motion.div
+                    className={styles.task_card}
+                    key={task.id}
                     onClick={() => openModal(task)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
                 >
                     <p className={task.statusId === 2 ? styles.task_title2 : task.statusId === 1 ? styles.task_title : styles.task_title3}>
                         {task.title}
                     </p>
                     <p className={styles.task_description}>{task.description}</p>
-                </div>
+                </motion.div>
             ))}
             <Modal tasksUpd={tasksUpd} isOpen={isModalOpen} onClose={closeModal} oneTask={selectedTask} statuses={statuses} />
         </div>
