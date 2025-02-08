@@ -30,7 +30,6 @@ const Todo = () => {
             user.setIsAuth(true);
         }
     })
-
     
 
     useEffect(() => {
@@ -228,7 +227,7 @@ const Todo = () => {
                         }
                     </div>
 
-                    <Tasks tasks={showTasks} statuses={task.statuses} />
+                    <Tasks tasksUpd={getUserTasks} tasks={showTasks} statuses={task.statuses} />
 
                 </div>
 

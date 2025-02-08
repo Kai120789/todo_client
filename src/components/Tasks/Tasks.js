@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Tasks.module.scss";
 import Modal from "../Modal/Modal";
 
-const Tasks = ({ tasks, statuses }) => {
+const Tasks = ({ tasksUpd, tasks, statuses }) => {
     const [selectedTask, setSelectedTask] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const Tasks = ({ tasks, statuses }) => {
                     <p className={styles.task_description}>{task.description}</p>
                 </div>
             ))}
-            <Modal isOpen={isModalOpen} onClose={closeModal} task={selectedTask} statuses={statuses} />
+            <Modal tasksUpd={tasksUpd} isOpen={isModalOpen} onClose={closeModal} oneTask={selectedTask} statuses={statuses} />
         </div>
     );
 };

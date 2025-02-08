@@ -36,6 +36,11 @@ export const getOneTask = async(id) => {
     return data
 }
 
+export const deleteTask = async(id) => {
+    const {data} = await $authHost.delete('api/task/' + id)
+    return data
+}
+
 export const getAllTasks = async() => {
     const {data} = await $authHost.get('api/task')
     return data
