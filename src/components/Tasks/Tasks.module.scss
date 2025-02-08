@@ -23,7 +23,7 @@
     height: 90%;
 }
 
-.task_title, .task_description {
+.task_title, .task_title2, .task_description {
     margin: 0;
     padding: 10px;
     border-radius: 4px;
@@ -31,6 +31,13 @@
 
 .task_title {
     background-color: rgb(111, 136, 208);
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.task_title2 {
+    background-color: rgb(51, 215, 87);
     font-weight: bold;
     font-size: 16px;
     text-align: center;

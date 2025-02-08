@@ -19,7 +19,17 @@
 }
 
 .title {
+    height: 50px;
+    align-content: center;
     background-color: rgb(143, 143, 247);
+    margin-top: -5px;
+    border-radius: 8px;
+}
+
+.title2 {
+    height: 50px;
+    align-content: center;
+    background-color: rgb(113, 222, 127);
     margin-top: -5px;
     border-radius: 8px;
 }
