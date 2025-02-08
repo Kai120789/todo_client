@@ -10,18 +10,34 @@
     justify-content: center;
 }
 
+.upd_input {
+    width: 200px;
+    min-height: 50px;
+}
+
 .modalContent {
+    min-height: 250px;
     background: white;
     padding: 20px;
     border-radius: 8px;
     width: 300px;
     text-align: center;
+    align-content: center;
 }
 
 .title {
     height: 50px;
     align-content: center;
     background-color: rgb(143, 143, 247);
+    margin-top: -5px;
+    border-radius: 8px;
+}
+
+.title_input {
+    font-size: 20px;
+    height: 50px;
+    align-content: center;
+    background-color: rgb(221, 221, 239);
     margin-top: -5px;
     border-radius: 8px;
 }
@@ -34,14 +50,24 @@
     border-radius: 8px;
 }
 
+.title2_input {
+    font-size: 20px;
+    height: 50px;
+    align-content: center;
+    background-color: rgb(151, 220, 160);
+    margin-top: -5px;
+    border-radius: 8px;
+}
+
 
 .updButton {
-    width: 205px;
+    width: 255px;
+    height: 40px;
     margin-left: 5px;
     margin-top: 10px;
     padding: 8px 16px;
     background: blue;
-    font-size: 14px;
+    font-size: 16px;
     color: white;
     border: none;
     cursor: pointer;
@@ -49,11 +75,12 @@
 
 .delButton {
     margin-top: 5px;
-    width: 100px;
+    height: 40px;
+    width: 125px;
     margin-left: 5px;
     padding: 8px 16px;
     background: red;
-    font-size: 14px;
+    font-size: 16px;
     color: white;
     border: none;
     cursor: pointer;
@@ -61,11 +88,25 @@
 
 .doneButton {
     margin-top: 5px;
-    width: 100px;
+    height: 40px;
+    width: 125px;
     margin-left: 5px;
     padding: 8px 16px;
     background: green;
-    font-size: 14px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.mini_button {
+    width: 125px;
+    height: 40px;
+    margin-left: 5px;
+    margin-top: 20px;
+    padding: 8px 16px;
+    background: blue;
+    font-size: 16px;
     color: white;
     border: none;
     cursor: pointer;
