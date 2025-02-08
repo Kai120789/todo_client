@@ -55,17 +55,19 @@ body {
 
 .button_todo {
     margin: 0;
+    margin-bottom: 5px;
     font-size: 14px;
     color: #ffffff;
     background-color: #322281;
     cursor: pointer; 
-    min-width: 140px;
+    min-width: 200px;
     max-width: 300px;
     height: 40px;
 }
 
 .button_todo_mini {
     margin: 0;
+    margin-bottom: 5px;
     font-size: 14px;
     color: #ffffff;
     background-color: #322281;

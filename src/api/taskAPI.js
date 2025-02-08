@@ -6,6 +6,11 @@ export const createBoard = async(name) => {
     return data
 }
 
+export const updateBoard = async(name, id) => {
+    const {data} = await $authHost.put('api/board/' + id, {name},  { withCredentials: true })
+    return data
+}
+
 export const deleteBoard = async(boardId) => {
     const {data} = await $authHost.delete('api/board/'+ boardId,  { withCredentials: true })
     return data

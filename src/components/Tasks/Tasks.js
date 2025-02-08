@@ -28,7 +28,7 @@ const Tasks = ({ tasksUpd, tasks, statuses }) => {
                     key={task.id} 
                     onClick={() => openModal(task)}
                 >
-                    <p className={task.statusId === 2 ? styles.task_title2 : styles.task_title}>
+                    <p className={task.statusId === 2 ? styles.task_title2 : task.statusId === 1 ? styles.task_title : styles.task_title3}>
                         {task.title}
                     </p>
                     <p className={styles.task_description}>{task.description}</p>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../..";
-import { createTask, getAllBoards, getAllBoardsByUserId, getAllTasks, getStatuses, deleteBoard } from "../../api/taskAPI";
+import { createTask, getAllBoards, getAllBoardsByUserId, getAllTasks, getStatuses, deleteBoard, updateBoard } from "../../api/taskAPI";
 import { Form } from "react-router-dom";
 import {createBoard, addUserToBoard, getOneBoard} from "../../api/taskAPI"
 import { jwtDecode } from "jwt-decode";
@@ -18,10 +18,12 @@ const Todo = () => {
     const [userId, setUserId] = useState('')
     const [loading, setLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
+    const [showFormUpd, setShowFormUpd] = useState(false);
     const [showTaskForm, setShowTaskForm] = useState(false);
     const [showUserForm, setShowUserForm] = useState(false);
     const [showTasks, setShowTasks] = useState(false)
     const [activeBoardId, setActiveBoardId] = useState(null);
+    const [newName, setNewName] = useState('')
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -119,7 +121,7 @@ const Todo = () => {
     };
     
 
-    const click = async () => {
+    const newBoard = async () => {
         try {
             const newBoard = await createBoard(name)
             task.setBoards([...task.boards, newBoard]);
@@ -133,6 +135,24 @@ const Todo = () => {
             setShowForm(false);
         } catch (e) {
             alert(e.response?.data?.message)
+        }
+    }
+
+    const updBoard = async () => {
+        try {
+            const newBoard = await updateBoard(newName, activeBoardId)
+            task.setBoards([...task.boards, newBoard]);
+
+            const updatedBoards = await getAllBoardsByUserId(user.user.id);
+            const fetchedBoards = await Promise.all(updatedBoards.map(board => getOneBoard(board.boardId)));
+            task.setUserBoards(fetchedBoards);
+
+            setNewName("");
+            setShowFormUpd(false);
+        } catch (e) {
+            alert("board is not selected or unauthorized")
+            setNewName("")
+            setShowFormUpd(false)
         }
     }
 
@@ -153,8 +173,26 @@ const Todo = () => {
                                 onChange={(e) => setName(e.target.value)}
                             />
                             <div className={styles.button_group}>
-                                <button className={styles.button_todo_mini} onClick={click}>Создать</button>
+                                <button className={styles.button_todo_mini} onClick={newBoard}>Создать</button>
                                 <button className={styles.button_todo_mini} onClick={() => setShowForm(false)}>Отмена</button>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {!showFormUpd? (
+                        <button className={styles.button_todo} onClick={() => setShowFormUpd(true)}>Переименовать доску</button>
+                    ) : (
+                        <div>
+                            <input
+                                className={styles.input_todo}
+                                value={newName}
+                                type="text"
+                                placeholder="Новое название доски"
+                                onChange={(e) => setNewName(e.target.value)}
+                            />
+                            <div className={styles.button_group}>
+                                <button className={styles.button_todo_mini} onClick={updBoard}>Обновить</button>
+                                <button className={styles.button_todo_mini} onClick={() => setShowFormUpd(false)}>Отмена</button>
                             </div>
                         </div>
                     )}

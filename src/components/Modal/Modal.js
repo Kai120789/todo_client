@@ -95,7 +95,7 @@ const Modal = ({ tasksUpd, isOpen, onClose, oneTask, statuses }) => {
                 
                 {!showInputs?
                     <div>
-                        <h2 className={oneTask.statusId === 2 ? styles.title2 : styles.title}>
+                        <h2 className={oneTask.statusId === 2 ? styles.title2 : oneTask.statusId === 1 ? styles.title : styles.title3}>
                             {oneTask.title}
                         </h2>
                         <p><strong>Описание:</strong> {oneTask.description}</p>
@@ -114,7 +114,7 @@ const Modal = ({ tasksUpd, isOpen, onClose, oneTask, statuses }) => {
                     <div>
                         <h2>Название:</h2>
                         <input 
-                            className={oneTask.statusId === 2 ? styles.title2_input : styles.title_input} 
+                            className={oneTask.statusId === 2 ? styles.title2_input : oneTask.statusId === 1 ? styles.title_input : styles.title3_input} 
                             placeholder={oneTask.title}
                             value={newTitle}
                             type="text"
