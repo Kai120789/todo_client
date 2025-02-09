@@ -8,7 +8,7 @@ const Modal = ({ tasksUpd, isOpen, onClose, oneTask, statuses }) => {
     const [showInputs, setShowInputs] = useState(false)
     const [newTitle, setNewTitle] = useState('')
     const [newDescription, setNewDescription] = useState('')
-    const [newStatusId, setNewStatusId] = useState('')
+    const [newStatusId, setNewStatusId] = useState(null)
 
     const cleanInputs = async () => {
         setNewTitle('')
@@ -101,10 +101,11 @@ const Modal = ({ tasksUpd, isOpen, onClose, oneTask, statuses }) => {
                         <p><strong>Описание:</strong> {oneTask.description}</p>
                         <p><strong>Статус:</strong> {statusName}</p>
                         <button onClick={() => setShowInputs(true)} className={styles.updButton}>Редактировать</button>
-                        {oneTask.statusId !== 2?
-                            <button onClick={taskFunc} className={styles.doneButton}>Завершить</button>
-                            :
+                        {oneTask.statusId === 2?
+                            
                             <button onClick={taskFunc} className={styles.doneButton}>Вернуть</button>
+                            :
+                            <button onClick={taskFunc} className={styles.doneButton}>Завершить</button>
                         }
                         <button onClick={deleteT} className={styles.delButton}>Удалить</button>
                     </div>
