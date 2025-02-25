@@ -57,7 +57,7 @@ export const getAllTasks = async() => {
 }
 
 export const addUserToBoard = async(boardId, userId) => {
-    const {data} = await $authHost.post('api/board/' + boardId, {userId})
+    const {data} = await $authHost.post('api/board/add/' + boardId, {userId})
     return data
 }
 
